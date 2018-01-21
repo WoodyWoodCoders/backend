@@ -22,6 +22,7 @@ import org.hibernate.annotations.GenericGenerator;
 public class Devis implements java.io.Serializable {
 
     private int id;
+    private Echeancier echeancier;
     private Utilisateur utilisateur;
     private Date date_crea;
     private String nom;
@@ -39,8 +40,9 @@ public class Devis implements java.io.Serializable {
         this.id = id;
     }
 
-    public Devis(int id, Utilisateur utilisateur, Date date_crea, String nom, String reference, int status, Client client, Set<Paiement> paiements, Set<Partie> partis) {
+    public Devis(int id, Echeancier echeancier, Utilisateur utilisateur, Date date_crea, String nom, String reference, int status, Client client, Set<Paiement> paiements, Set<Partie> partis) {
         this.id = id;
+        this.echeancier = echeancier;
         this.utilisateur = utilisateur;
         this.date_crea = date_crea;
         this.nom = nom;
@@ -62,6 +64,17 @@ public class Devis implements java.io.Serializable {
 
     public void setId(int id) {
         this.id = id;
+    }
+    
+    // GET AND SET ECHEANCIER
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "devis")
+    @JoinColumn( nullable = false)
+    public Echeancier getEcheancier() {
+        return this.echeancier;
+    }
+
+    public void setEcheancier(Echeancier echeancier) {
+        this.echeancier = echeancier;
     }
 
     // GET AND SET UTILISATEUR

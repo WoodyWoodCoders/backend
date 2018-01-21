@@ -29,7 +29,7 @@ import org.hibernate.annotations.GenericGenerator;
 public class Paiement implements java.io.Serializable {
     
     private int id;
-    private int montant;
+    private float montant;
     private Date date_paiement;
     private int moyen;
     private Devis devis;
@@ -43,7 +43,7 @@ public class Paiement implements java.io.Serializable {
         this.id = id;
     }
     
-    public Paiement(int id, int montant, Date date_paiement, int moyen, Devis devis, Client client){
+    public Paiement(int id, float montant, Date date_paiement, int moyen, Devis devis, Client client){
         this.id = id;
         this.montant = montant;
         this.date_paiement = date_paiement;
@@ -67,11 +67,11 @@ public class Paiement implements java.io.Serializable {
     
     // GET AND SET MONTANT
     @Column(name="montant")
-    public Integer getMontant() {
+    public float getMontant() {
         return this.montant;
     }
     
-    public void setMontant(int montant) {
+    public void setMontant(float montant) {
         this.montant = montant;
     }
     
