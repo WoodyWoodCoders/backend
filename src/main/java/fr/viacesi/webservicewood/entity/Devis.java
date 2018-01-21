@@ -28,7 +28,7 @@ public class Devis implements java.io.Serializable {
     private String reference;
     private int status;
     private Client client;
-    private Paiement paiement;
+    private Set<Paiement> paiements = new HashSet<Paiement>(0);
     private Set<Partie> partis = new HashSet<Partie>(0);
 
     public Devis() {
@@ -39,7 +39,7 @@ public class Devis implements java.io.Serializable {
         this.id = id;
     }
 
-    public Devis(int id, Utilisateur utilisateur, Date date_crea, String nom, String reference, int status, Client client, Paiement paiement, Set<Partie> partis) {
+    public Devis(int id, Utilisateur utilisateur, Date date_crea, String nom, String reference, int status, Client client, Set<Paiement> paiements, Set<Partie> partis) {
         this.id = id;
         this.utilisateur = utilisateur;
         this.date_crea = date_crea;
@@ -47,7 +47,7 @@ public class Devis implements java.io.Serializable {
         this.reference = reference;
         this.status = status;
         this.client = client;
-        this.paiement = paiement;
+        this.paiements = paiements;
         this.partis = partis;
     }
 
@@ -128,13 +128,13 @@ public class Devis implements java.io.Serializable {
     }
 
     // GET AND SET PAIEMENT
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "devis")
-    public Paiement getPaiement() {
-        return this.paiement;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "devis")
+    public Set<Paiement> getPaiements() {
+        return this.paiements;
     }
 
-    public void setPaiement(Paiement paiement) {
-        this.paiement = paiement;
+    public void setPaiements(Set<Paiement> paiements) {
+        this.paiements = paiements;
     }
 
     // GET AND SET PARTIS

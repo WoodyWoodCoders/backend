@@ -12,6 +12,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -96,7 +97,7 @@ public class Paiement implements java.io.Serializable {
     }
     
     // GET AND SET DEVIS
-    @OneToOne(fetch=FetchType.LAZY)
+    @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="devis_id")
     public Devis getDevis() {
         return this.devis;
@@ -107,7 +108,7 @@ public class Paiement implements java.io.Serializable {
     }
     
     // GET AND SET CLIENT
-    @OneToOne(fetch=FetchType.LAZY)
+    @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="client_id")
     public Client getClient() {
         return this.client;

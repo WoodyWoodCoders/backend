@@ -37,7 +37,7 @@ public class Client implements java.io.Serializable{
     
     private int id;
     private Set<Devis> devis = new HashSet<Devis>(0);
-    private Paiement paiement;
+    private Set<Paiement> paiements = new HashSet<Paiement>(0);
     private String nom;
     private int telephone;
     private String adresse;
@@ -53,10 +53,10 @@ public class Client implements java.io.Serializable{
         this.id = id;
     }
     
-    public Client(int id, Set<Devis> devis, Paiement paiement, String nom, int telephone, String adresse, int cp, String ville, Date date_crea){
+    public Client(int id, Set<Devis> devis, Set<Paiement> paiements, String nom, int telephone, String adresse, int cp, String ville, Date date_crea){
         this.id = id;
         this.devis = devis;
-        this.paiement = paiement;
+        this.paiements = paiements;
         this.nom = nom;
         this.telephone = telephone;
         this.adresse = adresse;
@@ -89,13 +89,13 @@ public class Client implements java.io.Serializable{
      }
      
      // GET AND SET PAIEMENT
-     @OneToOne(fetch=FetchType.LAZY, mappedBy="client")
-     public Paiement getPaiement(){
-         return this.paiement;
+     @OneToMany(fetch=FetchType.LAZY, mappedBy="client")
+     public Set<Paiement> getPaiements(){
+         return this.paiements;
      }
      
-     public void setPaiement(Paiement paiement){
-         this.paiement = paiement;
+     public void setPaiements(Set<Paiement> paiements){
+         this.paiements = paiements;
      }
      
      // GET AND SET NOM
