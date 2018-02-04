@@ -10,8 +10,8 @@ package fr.viacesi.webservicewood.dto;
  * @author Numalama
  */
 public class ComposantInModuleDTO {
-    private Integer module;
-    private Integer composant;
+    private ModuleDTO module;
+    private ComposantDTO composant;
     private String disposition;
     
     public ComposantInModuleDTO(){
@@ -21,28 +21,28 @@ public class ComposantInModuleDTO {
     /**
      * @return the module
      */
-    public Integer getModule() {
+    public ModuleDTO getModule() {
         return module;
     }
 
     /**
      * @param module the module to set
      */
-    public void setModule(Integer module) {
+    public void setModule(ModuleDTO module) {
         this.module = module;
     }
 
     /**
      * @return the composant
      */
-    public Integer getComposant() {
+    public ComposantDTO getComposant() {
         return composant;
     }
 
     /**
      * @param composant the composant to set
      */
-    public void setComposant(Integer composant) {
+    public void setComposant(ComposantDTO composant) {
         this.composant = composant;
     }
 

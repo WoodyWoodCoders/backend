@@ -17,7 +17,7 @@ public class ComposantDTO {
     private String gamme;
     private String dimensions;
     private String prix;
-    private List composantInModules;
+    //private List composantInModules;
     
     public ComposantDTO(){
         
@@ -94,16 +94,16 @@ public class ComposantDTO {
 
     /**
      * @return the composantInModules
-     */
+     
     public List getComposantInModules() {
         return composantInModules;
     }
-
+    * */
     /**
      * @param composantInModules the composantInModules to set
-     */
+     
     public void setComposantInModules(List composantInModules) {
         this.composantInModules = composantInModules;
     }
-
+    * */
 }

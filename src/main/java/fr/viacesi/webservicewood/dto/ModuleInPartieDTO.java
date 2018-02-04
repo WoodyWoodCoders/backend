@@ -10,8 +10,8 @@ package fr.viacesi.webservicewood.dto;
  * @author Numalama
  */
 public class ModuleInPartieDTO {
-    private Integer partie;
-    private Integer module;
+    private PartieDTO partie;
+    private ModuleDTO module;
     private String disposition;
     
     public ModuleInPartieDTO(){
@@ -21,28 +21,28 @@ public class ModuleInPartieDTO {
     /**
      * @return the partie
      */
-    public Integer getPartie() {
+    public PartieDTO getPartie() {
         return partie;
     }
 
     /**
      * @param partie the partie to set
      */
-    public void setPartie(Integer partie) {
+    public void setPartie(PartieDTO partie) {
         this.partie = partie;
     }
 
     /**
      * @return the module
      */
-    public Integer getModule() {
+    public ModuleDTO getModule() {
         return module;
     }
 
     /**
      * @param module the module to set
      */
-    public void setModule(Integer module) {
+    public void setModule(ModuleDTO module) {
         this.module = module;
     }
 

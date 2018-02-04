@@ -18,8 +18,8 @@ public class ModuleDTO {
     private String nom;
     private String dimension;
     private String prix;
-    private List moduleInParties;
-    private List composantInModules;
+    private ModuleInPartieDTO moduleInParties;
+    private ComposantInModuleDTO composantInModules;
     
     public ModuleDTO(){
         
@@ -98,28 +98,28 @@ public class ModuleDTO {
     /**
      * @return the moduleInParties
      */
-    public List getModuleInParties() {
+    public ModuleInPartieDTO getModuleInParties() {
         return moduleInParties;
     }
 
     /**
      * @param moduleInParties the moduleInParties to set
      */
-    public void setModuleInParties(List moduleInParties) {
+    public void setModuleInParties(ModuleInPartieDTO moduleInParties) {
         this.moduleInParties = moduleInParties;
     }
 
     /**
      * @return the composantInModules
      */
-    public List getComposantInModules() {
+    public ComposantInModuleDTO getComposantInModules() {
         return composantInModules;
     }
 
     /**
      * @param composantInModules the composantInModules to set
      */
-    public void setComposantInModules(List composantInModules) {
+    public void setComposantInModules(ComposantInModuleDTO composantInModules) {
         this.composantInModules = composantInModules;
     }
 

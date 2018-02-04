@@ -22,13 +22,13 @@ public class UserResourcesController extends AbstractSecureController {
 
     @RequestMapping(value = "/profile", method = RequestMethod.GET)
     public ResponseEntity<Response> getUserInfos() {
-        Utilisateur utilisateur = this.getUtilisateur();
+        UtilisateurDTO utilisateur = this.getUtilisateur();
         return this.responseSuccess(utilisateur);
     }
 
     @RequestMapping(value = "/update/login", method = RequestMethod.POST)
     public UtilisateurDTO updateUser(@RequestBody Utilisateur user) {
-        Utilisateur current_utilisateur = this.getUtilisateur();
+        UtilisateurDTO current_utilisateur = this.getUtilisateur();
         return UtilisateurService.ChangeUtilisateurLogin(current_utilisateur, user.getLogin());
     }
 }

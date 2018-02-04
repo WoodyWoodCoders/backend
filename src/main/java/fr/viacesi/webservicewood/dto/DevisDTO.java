@@ -14,14 +14,13 @@ import java.util.List;
  */
 public class DevisDTO {
     private Integer id;
-    private Integer utilisateur;
+    private UtilisateurDTO utilisateur;
     private Date dateCrea;
     private String nom;
     private String reference;
     private Integer status;
-    private List client;
-    //private Integer paiement;
-    private List partis;
+    private ClientDTO client;
+    private PartieDTO partis;
     
     public DevisDTO(){
         
@@ -44,14 +43,14 @@ public class DevisDTO {
     /**
      * @return the utilisateur
       * */
-    public Integer getUtilisateur() {
+    public UtilisateurDTO getUtilisateur() {
         return utilisateur;
     }
    
     /**
      * @param utilisateur the utilisateur to set
       * */
-    public void setUtilisateur(Integer utilisateur) {
+    public void setUtilisateur(UtilisateurDTO utilisateur) {
         this.utilisateur = utilisateur;
     }
   
@@ -113,43 +112,30 @@ public class DevisDTO {
 
     /**
      * @return the client
-     *  */
-    public List getClient() {
+     */ 
+    public ClientDTO getClient() {
         return client;
     }
    
     /**
      * @param client the client to set
-     * */
-    public void setClient(List client) {
+     */
+    public void setClient(ClientDTO client) {
         this.client = client;
     }
+   
     
-    /**
-     * @return the paiementList
-     
-    public Integer getPaiement() {
-        return paiement;
-    }
-    * /
-    /**
-     * @param paiementList the paiementList to set
-    
-    public void setPaiement(Integer paiement) {
-        this.paiement = paiement;
-    }
-    * /
     /**
      * @return the partisList
      */
-    public List getPartis() {
+    public PartieDTO getPartis() {
         return partis;
     }
 
     /**
      * @param partisList the partisList to set
      */
-    public void setPartis(List partisList) {
+    public void setPartis(PartieDTO partis) {
         this.partis = partis;
     }
 

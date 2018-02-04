@@ -43,6 +43,10 @@ public class Module {
         this.id = id;
     }
     
+    public Module(String nom){
+        this.nom = nom;
+    }
+    
     public Module(int id, Date date_crea, String nom, String dimension, String prix, Set<ModuleInPartie> moduleInParties, Set<ComposantInModule> composantInModules){
         this.id = id;
         this.date_crea = date_crea;

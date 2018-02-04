@@ -18,4 +18,7 @@ public interface ClientDAO extends CrudRepository<Client, Long>{
     public abstract Client save(Client client);
     public abstract Client findById(Integer id);
     public abstract List<Client> findAll();
+    public abstract boolean removeById(Integer id);
+    //public abstract boolean remove(Integer id);
+    public abstract void delete(Client client);
 }

@@ -7,6 +7,7 @@ package fr.viacesi.webservicewood.controller;
 
 import fr.viacesi.webservicewood.dto.DevisDTO;
 import fr.viacesi.webservicewood.dto.DevisListDTO;
+import fr.viacesi.webservicewood.dto.UtilisateurDTO;
 import fr.viacesi.webservicewood.entity.Devis;
 import fr.viacesi.webservicewood.entity.Utilisateur;
 import fr.viacesi.webservicewood.service.DevisService;
@@ -33,14 +34,14 @@ public class DevisRessourcesController extends AbstractSecureController {
     // RETURN THE DEVIS MAPPED TO DTO
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public DevisDTO creatDevis(@RequestBody Devis devis) {
-        Utilisateur current_utilisateur = this.getUtilisateur();
+        UtilisateurDTO current_utilisateur = this.getUtilisateur();
         return devisService.creatDevis(current_utilisateur, devis);
     }
     
     // RETURN LIST OF THE USER'S DEVIS MAPPED TO DTO
     @RequestMapping(value = "/get", method = RequestMethod.GET)
     public DevisListDTO getUserDevis() {
-        Utilisateur utilisateur = this.getUtilisateur();   
+        UtilisateurDTO utilisateur = this.getUtilisateur();   
         return devisService.getUserDevis(utilisateur);
     }
     

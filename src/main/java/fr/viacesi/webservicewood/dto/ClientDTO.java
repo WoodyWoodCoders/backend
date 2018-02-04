@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class ClientDTO {
     private Integer id;
-    private Integer devis;
+    //private Integer devis;
     private Integer paiement;
     private String nom;
     private Integer telephone;
@@ -43,16 +43,19 @@ public class ClientDTO {
     /**
      * @return the devis
      */
+    /*
     public Integer getDevis() {
         return devis;
     }
-
+    */
     /**
      * @param devis the devis to set
      */
+    /*
     public void setDevis(Integer devis) {
         this.devis = devis;
     }
+    */
 
     /**
      * @return the paiement

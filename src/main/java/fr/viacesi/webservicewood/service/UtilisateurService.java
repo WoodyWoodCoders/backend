@@ -38,7 +38,7 @@ public class UtilisateurService {
 
     }
 
-    public UtilisateurDTO ChangeUtilisateurLogin(Utilisateur currentUser, String newLogin) {
+    public UtilisateurDTO ChangeUtilisateurLogin(UtilisateurDTO currentUser, String newLogin) {
 
         Utilisateur user = this.utilisateurDAO.findById(currentUser.getId());
         user.setLogin(newLogin);

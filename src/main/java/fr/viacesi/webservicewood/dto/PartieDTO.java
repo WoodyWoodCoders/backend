@@ -18,8 +18,8 @@ public class PartieDTO {
     private String nom;
     private Date date_crea;
     private String disposition;
-    private Integer devis;
-    private List moduleInPartiesList ;
+    private DevisDTO devis;
+    private ModuleInPartieDTO moduleInPartie ;
     
     public PartieDTO(){
         
@@ -84,29 +84,29 @@ public class PartieDTO {
     /**
      * @return the devis
      */
-    public Integer getDevis() {
+    public DevisDTO getDevis() {
         return devis;
     }
 
     /**
      * @param devis the devis to set
      */
-    public void setDevis(Integer devis) {
+    public void setDevis(DevisDTO devis) {
         this.devis = devis;
     }
 
     /**
      * @return the moduleInPartiesList
      */
-    public List getModuleInPartiesList() {
-        return moduleInPartiesList;
+    public ModuleInPartieDTO getModuleInPartiesList() {
+        return moduleInPartie;
     }
 
     /**
      * @param moduleInPartiesList the moduleInPartiesList to set
      */
-    public void setModuleInPartiesList(List moduleInPartiesList) {
-        this.moduleInPartiesList = moduleInPartiesList;
+    public void setModuleInPartiesList(ModuleInPartieDTO moduleInPartie) {
+        this.moduleInPartie = moduleInPartie;
     }
 
 }

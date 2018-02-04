@@ -15,7 +15,7 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface DevisDAO extends CrudRepository<Devis, Long> {
 
-    //Devis findById(int id);
+    public abstract Devis findById(int id);
     //Devis findByNom(String Nom);
     //boolean existByNom(String Nom);
     //boolean existById(int id);

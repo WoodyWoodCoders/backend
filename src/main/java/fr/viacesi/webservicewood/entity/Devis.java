@@ -68,7 +68,7 @@ public class Devis implements java.io.Serializable {
     
     // GET AND SET ECHEANCIER
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "devis")
-    @JoinColumn( nullable = false)
+    @JoinColumn( nullable = true)
     public Echeancier getEcheancier() {
         return this.echeancier;
     }

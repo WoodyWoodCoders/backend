@@ -6,10 +6,13 @@
 package fr.viacesi.webservicewood.controller;
 
 
+import fr.viacesi.webservicewood.dto.DevisListDTO;
+import fr.viacesi.webservicewood.dto.UtilisateurDTO;
 import fr.viacesi.webservicewood.entity.Utilisateur;
 import fr.viacesi.webservicewood.service.UtilisateurService;
 import io.jsonwebtoken.Claims;
 import javax.servlet.http.HttpServletRequest;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -20,7 +23,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
  */
 public abstract class AbstractSecureController extends AbstractController {
     
-    protected Utilisateur utilisateur;
+    protected UtilisateurDTO utilisateur;
     
     @Autowired
     private UtilisateurService utilisateurService;
@@ -30,7 +33,7 @@ public abstract class AbstractSecureController extends AbstractController {
      * The user is retrieved from db only first time and is cached.
      * @return User
      */
-    public Utilisateur getUtilisateur(){
+    public UtilisateurDTO getUtilisateur(){
         return this.getUtilisateur(false);
     }
  
@@ -39,12 +42,20 @@ public abstract class AbstractSecureController extends AbstractController {
      * The user is retrieved from db and not from cache.
      * @return User
      */
-    public Utilisateur getUtilisateur(boolean refresh){
+    public UtilisateurDTO getUtilisateur(boolean refresh){
         if(this.utilisateur == null || refresh){
             HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
             Claims claims = (Claims) request.getAttribute("claims");
             int userId = claims.get("utilisateur", Integer.class);
-            this.utilisateur = utilisateurService.findById(userId);
+            System.out.println("userId" + userId);
+            //this.utilisateur = utilisateurService.findById(userId);
+            //GET USER IN DB
+            Utilisateur userDao = utilisateurService.findById(userId);
+            // NEW MAPPER
+            ModelMapper modelMapper = new ModelMapper();
+            // MAP LIST OF USER DEVIS DAO TO LIST OF USER DTO
+            UtilisateurDTO utilisateurDTO = modelMapper.map(userDao, UtilisateurDTO.class);
+            this.utilisateur = utilisateurDTO;
         }
         
         return this.utilisateur;

@@ -17,8 +17,8 @@ public class PaiementDTO {
     private Integer montant;
     private Date date_paiement;
     private Integer moyen;
-    private Integer devis;
-    private Integer client;
+    private DevisDTO devis;
+    private ClientDTO client;
     
     /**
      * @return the id
@@ -79,28 +79,28 @@ public class PaiementDTO {
     /**
      * @return the devis
      */
-    public Integer getDevis() {
+    public DevisDTO getDevis() {
         return devis;
     }
 
     /**
      * @param devis the devis to set
      */
-    public void setDevis(Integer devis) {
+    public void setDevis(DevisDTO devis) {
         this.devis = devis;
     }
 
     /**
      * @return the client
      */
-    public Integer getClient() {
+    public ClientDTO getClient() {
         return client;
     }
 
     /**
      * @param client the client to set
      */
-    public void setClient(Integer client) {
+    public void setClient(ClientDTO client) {
         this.client = client;
     }
 

@@ -9,8 +9,10 @@ package fr.viacesi.webservicewood.controller;
 import fr.viacesi.webservicewood.dao.UtilisateurDAO;
 import fr.viacesi.webservicewood.entity.Utilisateur;
 import fr.viacesi.webservicewood.http.Response;
+import fr.viacesi.webservicewood.utils.Cryptage;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import javax.servlet.ServletException;
 import org.json.JSONObject;
@@ -35,12 +37,13 @@ public class UserJWTController extends AbstractController {
     private UtilisateurDAO utilisateurDao;
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public Utilisateur registerUser(@RequestBody Utilisateur utilisateur) {
+    public Utilisateur registerUser(@RequestBody Utilisateur utilisateur) throws NoSuchAlgorithmException {
+        utilisateur.setPassword(Cryptage.encodage(utilisateur.getPassword()));
         return utilisateurDao.save(utilisateur);
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ResponseEntity<Response> login(@RequestBody Utilisateur user) throws ServletException {
+    public String login(@RequestBody Utilisateur user) throws ServletException, NoSuchAlgorithmException {
 
         String jwtToken = "";
         JSONObject reponse = new JSONObject();
@@ -62,7 +65,7 @@ public class UserJWTController extends AbstractController {
         if (!password.equals(pwd)) {
             throw new ServletException("Invalid login. Please check your name and password.");
         }
-
+        System.out.println("utilisateur.getId()" + utilisateur.getId());
         jwtToken = Jwts.builder()
                 .setSubject(login)
                 .claim("roles", "utilisateur") // here we will put buyer/seller aswell
@@ -72,7 +75,7 @@ public class UserJWTController extends AbstractController {
                 .compact();
         
         reponse.put("token", jwtToken);
-        //return reponse.toString();
-        return this.responseSuccess( jwtToken);
+        return reponse.toString();
+        //return this.responseSuccess( jwtToken);
     }
 }

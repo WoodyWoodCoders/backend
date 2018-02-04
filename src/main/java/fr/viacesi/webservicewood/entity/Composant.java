@@ -40,6 +40,9 @@ public class Composant {
         this.id = id;
     }
     
+    public Composant(String nom){
+        this.nom = nom;
+    }
     public Composant(int id, String nom, String gamme, String dimensions, String prix, Set<ComposantInModule> composantInModules){
         this.id = id;
         this.nom = nom;

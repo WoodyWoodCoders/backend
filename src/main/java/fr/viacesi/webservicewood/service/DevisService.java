@@ -10,7 +10,11 @@ import fr.viacesi.webservicewood.dao.DevisDAO;
 import fr.viacesi.webservicewood.dao.UtilisateurDAO;
 import fr.viacesi.webservicewood.dto.DevisDTO;
 import fr.viacesi.webservicewood.dto.DevisListDTO;
+import fr.viacesi.webservicewood.dto.PartieDTO;
+import fr.viacesi.webservicewood.dto.UtilisateurDTO;
+import fr.viacesi.webservicewood.entity.Client;
 import fr.viacesi.webservicewood.entity.Devis;
+import fr.viacesi.webservicewood.entity.Partie;
 import fr.viacesi.webservicewood.entity.Utilisateur;
 import java.util.List;
 import org.modelmapper.ModelMapper;
@@ -34,21 +38,19 @@ public class DevisService {
     @Autowired
     private ClientDAO clientDAO;
 
-    public DevisDTO creatDevis(Utilisateur current_user, Devis new_devis) {
-        //GET USER IN DB
-        Utilisateur userDao = utilisateurDAO.findById(current_user.getId());
-        // SET A USER TO THE NEW DEVIS BEFORE PUSH
-        new_devis.setUtilisateur(userDao);
-        // SAVE THE NEW DEVIS IN THE DB WITH DEVISDAO
-        devisDAO.save(new_devis);
-        // NEW MAPPER
-        ModelMapper modelMapper = new ModelMapper();
-        // MAP DEVIS DAO TO DEVIS DTO
-        DevisDTO devisDTO = modelMapper.map(new_devis, DevisDTO.class);
-        return devisDTO;
+    public DevisDTO creatDevis(UtilisateurDTO current_user, Devis new_devis) {
+            Devis devis = new_devis;
+            Client clientDao = this.clientDAO.findById(new_devis.getClient().getId());
+            Utilisateur utilisateurDao = this.utilisateurDAO.findById(current_user.getId());
+            devis.setClient(clientDao);
+            devis.setUtilisateur(utilisateurDao);
+            Devis devisDao = this.devisDAO.save(devis);
+            ModelMapper modelMapper = new ModelMapper();
+            DevisDTO devisDTO = modelMapper.map(devisDao, DevisDTO.class);
+            return devisDTO;
     }
     
-    public DevisListDTO getUserDevis(Utilisateur current_user){
+    public DevisListDTO getUserDevis(UtilisateurDTO current_user){
         //GET USER IN DB
         Utilisateur userDao = utilisateurDAO.findById(current_user.getId());
         // NEW MAPPER
