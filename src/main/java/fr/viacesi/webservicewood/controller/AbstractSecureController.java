@@ -34,16 +34,6 @@ public abstract class AbstractSecureController extends AbstractController {
      * @return User
      */
     public UtilisateurDTO getUtilisateur(){
-        return this.getUtilisateur(false);
-    }
- 
-    /**
-     * Retrieve the authenticated user. (no cache)
-     * The user is retrieved from db and not from cache.
-     * @return User
-     */
-    public UtilisateurDTO getUtilisateur(boolean refresh){
-        if(this.utilisateur == null || refresh){
             HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
             Claims claims = (Claims) request.getAttribute("claims");
             int userId = claims.get("utilisateur", Integer.class);
@@ -56,10 +46,22 @@ public abstract class AbstractSecureController extends AbstractController {
             // MAP LIST OF USER DEVIS DAO TO LIST OF USER DTO
             UtilisateurDTO utilisateurDTO = modelMapper.map(userDao, UtilisateurDTO.class);
             this.utilisateur = utilisateurDTO;
+            return this.utilisateur;
+    }
+ 
+    /**
+     * Retrieve the authenticated user. (no cache)
+     * The user is retrieved from db and not from cache.
+     * @return User
+     */
+    /*
+    public UtilisateurDTO getUtilisateur(boolean refresh){
+        if(this.utilisateur == null || refresh){
+           
         }
         
         return this.utilisateur;
     }
-    
+    */
     
 }

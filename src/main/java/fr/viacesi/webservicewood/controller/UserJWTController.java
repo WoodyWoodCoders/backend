@@ -38,7 +38,7 @@ public class UserJWTController extends AbstractController {
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public Utilisateur registerUser(@RequestBody Utilisateur utilisateur) throws NoSuchAlgorithmException {
-        utilisateur.setPassword(Cryptage.encodage(utilisateur.getPassword()));
+        utilisateur.setPassword(utilisateur.getPassword());
         return utilisateurDao.save(utilisateur);
     }
 
